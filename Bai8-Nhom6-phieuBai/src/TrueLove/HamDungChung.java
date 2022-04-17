@@ -18,6 +18,7 @@ public class HamDungChung{
     static public NhanVien ngauNhien(ArrayList<NhanVien> dsNhanVien){
 //        viết thuật toán chọn ngẫu nhiên
         Integer n = (new Random()).nextInt(dsNhanVien.size());
+        dsNhanVien.get(n).xuat();
         return dsNhanVien.get(n);
     }
     static public HashMap<String, String> chonTenSP(ArrayList<String> maSanPham, ArrayList<NhanVien> dsnv){
@@ -26,6 +27,9 @@ public class HamDungChung{
         Integer n = maSanPham.size() >  dsnv.size() ? dsnv.size() : maSanPham.size();
         for (int i = 0; i < n; i++) {
             ten.put(dsnv.get(i).getTenNV(), maSanPham.get(i));
+        }
+        for (String nv : ten.keySet()) {
+            System.out.println(String.format("%s: %s", ten.get(nv), nv));
         }
         return ten;
     }
@@ -39,6 +43,9 @@ public class HamDungChung{
             }else{
                 ten.put(t, 0);
             }
+        }
+        for (String nv : ten.keySet()) {
+            System.out.println(String.format("%s: %s", nv, ten.get(nv)));
         }
         return ten;
     }
@@ -56,6 +63,7 @@ public class HamDungChung{
         });
         LinkedList<NhanVien> nv = new LinkedList<>();
         for (Map.Entry<NhanVien, LocalDateTime> it : l) {
+            System.out.println(it.getKey());
             nv.add(it.getKey());
         }
 
@@ -70,6 +78,9 @@ public class HamDungChung{
                 return arg0.getDoanhSo().compareTo(arg1.getDoanhSo());
             }
         });
+        for (KhachHang k : kh) {
+            k.xuat();
+        }
         return kh;
     }
     

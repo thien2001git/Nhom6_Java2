@@ -1,9 +1,15 @@
+import TrueLove.HamDungChung;
 import java.util.Scanner;
 
 import TrueLove.KhachHang;
 import TrueLove.NhanVien;
 import TrueLove.QuanLyKhachHang;
 import TrueLove.QuanLyNhanVien;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -35,6 +41,11 @@ public class Main {
             System.out.println("6. Xoa khach hang");
             System.out.println("7. Sua khach hang");
             System.out.println("8. Xem danh sach khach hang");
+            System.out.println("9. Chon ngau nhien nhan vien");
+            System.out.println("10. Gan ten nhan vien cho san pham");
+            System.out.println("11. Dem so ten nhan vien");
+            System.out.println("12. Dang ky du lich");
+            System.out.println("13. Xuat khach hang da xep doanh thu");
             Integer i = -1;
             try {
                 i = Integer.parseInt(scn.nextLine());
@@ -106,6 +117,35 @@ public class Main {
                         break;
                     case 8:
                         qLyKhachHang.xuat();
+                        break;
+                    case 9:
+                        HamDungChung.ngauNhien(quanLyNhanVien.dsNhanVien);
+                        break;
+                    case 10:
+                        ArrayList<String> dsMaSP = new ArrayList<>();
+                        dsMaSP.add("SP01");
+                        dsMaSP.add("SP02");
+                        dsMaSP.add("SP03");
+                        dsMaSP.add("SP04");
+                        dsMaSP.add("SP05");
+                        dsMaSP.add("SP06");
+                        HamDungChung.chonTenSP(dsMaSP, quanLyNhanVien.dsNhanVien);
+                        break;
+                    case 11:
+                   
+                        HamDungChung.demSoTenNhanVien(quanLyNhanVien.dsNhanVien);
+                        break;
+                    case 12:
+                        HashMap<NhanVien, LocalDateTime> dsDangKy = new HashMap<>();
+                        Random rd = new Random();
+                        for (int j = 0; j < quanLyNhanVien.dsNhanVien.size(); j++) {
+                            LocalDateTime lc = LocalDateTime.now();
+                            dsDangKy.put(quanLyNhanVien.dsNhanVien.get(j), lc);
+                        }
+                        HamDungChung.dsDangKyDuLich(dsDangKy);
+                        break;
+                    case 13:
+                        HamDungChung.xuatDsKhachHang(qLyKhachHang.dsKhachHang);
                         break;
                     default:
                         break;
