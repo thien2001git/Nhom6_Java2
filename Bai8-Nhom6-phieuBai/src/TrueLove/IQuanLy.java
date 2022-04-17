@@ -16,7 +16,9 @@ public interface IQuanLy {
 //    sửa có thể return cái đối tượng đã sửa
     public void update(int index, Object obj);
 //   hàm xóa: có thể return cái đối tượng đã xóa
-    public void remove();
+    public void remove(int index);
 //    hàm tìm kiếm: có thể tìm kiếm theo 1 hoặc nhiều thuộc tính trong đối tượng
-    public ArrayList<KhachHang> find();
+    public ArrayList find(Object obj);
+//    xuất danh sách
+    public void xuat();
 }
