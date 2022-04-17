@@ -14,6 +14,7 @@ import java.util.Scanner;
  * @author hxt
  */
 public class QuanLyNhanVien implements IQuanLy {
+
     public ArrayList<NhanVien> dsNhanVien;
 
     public QuanLyNhanVien() {
@@ -28,7 +29,7 @@ public class QuanLyNhanVien implements IQuanLy {
     @Override
     public void add() {
         Scanner scn = new Scanner(System.in);
-        System.out.println("Nhap so KH");
+        System.out.println("Nhap so nhan vien can nhap");
         Integer sonv = 0;
         try {
             sonv = scn.nextInt();
@@ -52,7 +53,7 @@ public class QuanLyNhanVien implements IQuanLy {
                     System.out.println(e.getMessage());
                 }
             }
-            
+
         }
 
     }
@@ -79,10 +80,19 @@ public class QuanLyNhanVien implements IQuanLy {
 
     @Override
 
-    public ArrayList<NhanVien> find(Object obj) {
-        String nameOrID = (String) obj;
-        return (ArrayList<NhanVien>) dsNhanVien.stream()
-                .filter(c -> c.getMaNV().equals(nameOrID) || c.getTenNV().equals(nameOrID));
+    public List<NhanVien> find(Object obj) {
+        List<NhanVien> x = new ArrayList<>();
+        if (obj instanceof String) {
+            String nameOrID = (String) obj;
+            nameOrID.toLowerCase();
+            x = dsNhanVien.stream()
+                    .filter(c -> c.getMaNV().toLowerCase().contains(nameOrID) || c.getTenNV().toLowerCase().contains(nameOrID)).toList();
+            System.out.println("Ket qua tim kiem");
+            for (NhanVien nhanVien : x) {
+                nhanVien.xuat();
+            }
+        }
+        return x;
     }
 
     @Override

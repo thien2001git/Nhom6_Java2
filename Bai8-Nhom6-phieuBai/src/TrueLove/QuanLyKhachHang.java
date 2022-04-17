@@ -5,6 +5,7 @@
 package TrueLove;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -12,6 +13,7 @@ import java.util.Scanner;
  * @author hxt
  */
 public class QuanLyKhachHang implements IQuanLy {
+
     // tạo danh sách khách hàng và các hàm thêm, sửa, xóa, tìm kiếm cho khách hàng
     public ArrayList<KhachHang> dsKhachHang;
 
@@ -20,6 +22,7 @@ public class QuanLyKhachHang implements IQuanLy {
     }
 
     public QuanLyKhachHang() {
+        dsKhachHang = new ArrayList<>();
     }
 
     // thêm
@@ -66,22 +69,42 @@ public class QuanLyKhachHang implements IQuanLy {
     // thay thế phần tử bằng vị trí
     @Override
     public void update(int index, Object kh) {
-        KhachHang sua = (KhachHang) kh;
-        dsKhachHang.set(index, sua);
+        if (index < 0 || index > dsKhachHang.size()) {
+            System.out.println("Số thứ tự đã cho ngoài vòng danh sách");
+        } else {
+            KhachHang sua = (KhachHang) kh;
+            dsKhachHang.set(index, sua);
+        }
+
     }
 
     // pt xóa bằng vị trí trong ds
     @Override
     public void remove(int i) {
-        KhachHang khachhang = new KhachHang();
-        dsKhachHang.remove(i);
+        if (i < 0 || i > dsKhachHang.size()) {
+            System.out.println("Số thứ tự đã cho ngoài vòng danh sách");
+        } else {
+            KhachHang khachhang = new KhachHang();
+            dsKhachHang.remove(i);
+        }
+
     }
 
     // pt tìm kiếm: tìm kiếm bằng mã khách hàng
     @Override
-    public ArrayList<KhachHang> find(Object obj) {
-        String maKH = (String) obj;
-        return (ArrayList<KhachHang>) dsKhachHang.stream().filter(c -> c.getMaKH().contains(maKH));
+    public List<KhachHang> find(Object obj) {
+        List<KhachHang> x = new ArrayList<>();
+        if (obj instanceof String) {
+            String maKH = (String) obj;
+            maKH.toLowerCase();
+            
+            x = dsKhachHang.stream().filter(c -> c.getMaKH().toLowerCase().contains(maKH) || c.getTenKH().toLowerCase().contains(maKH)).toList();
+            System.out.println("Ket qua tim kiem");
+            for (KhachHang e : x) {
+                e.xuat();
+            }
+        }
+        return x;
     }
 
 }

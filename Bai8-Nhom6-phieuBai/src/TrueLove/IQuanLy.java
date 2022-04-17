@@ -5,6 +5,7 @@
 package TrueLove;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -18,7 +19,7 @@ public interface IQuanLy {
 //   hàm xóa: có thể return cái đối tượng đã xóa
     public void remove(int index);
 //    hàm tìm kiếm: có thể tìm kiếm theo 1 hoặc nhiều thuộc tính trong đối tượng
-    public ArrayList find(Object obj);
+    public List find(Object obj);
 //    xuất danh sách
     public void xuat();
 }

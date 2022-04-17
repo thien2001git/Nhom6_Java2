@@ -18,6 +18,7 @@ public class HamDungChung{
     static public NhanVien ngauNhien(ArrayList<NhanVien> dsNhanVien){
 //        viết thuật toán chọn ngẫu nhiên
         Integer n = (new Random()).nextInt(dsNhanVien.size());
+        System.out.println("Nhan vien ngau nhien");
         dsNhanVien.get(n).xuat();
         return dsNhanVien.get(n);
     }
@@ -28,6 +29,8 @@ public class HamDungChung{
         for (int i = 0; i < n; i++) {
             ten.put(dsnv.get(i).getTenNV(), maSanPham.get(i));
         }
+        System.out.println("Ten san phan theo ten nhan vien");
+        System.out.println(String.format("%s: %s", "MaSP", "Ten San pham"));
         for (String nv : ten.keySet()) {
             System.out.println(String.format("%s: %s", ten.get(nv), nv));
         }
@@ -41,9 +44,10 @@ public class HamDungChung{
             if(ten.containsKey(t)){
                 ten.replace(t, ten.get(t) + 1);
             }else{
-                ten.put(t, 0);
+                ten.put(t, 1);
             }
         }
+        System.out.println("Danh dem ten nhan vien");
         for (String nv : ten.keySet()) {
             System.out.println(String.format("%s: %s", nv, ten.get(nv)));
         }
@@ -61,9 +65,10 @@ public class HamDungChung{
             }
             
         });
+        System.out.println("Thu tu dang ky di du lich");
         LinkedList<NhanVien> nv = new LinkedList<>();
         for (Map.Entry<NhanVien, LocalDateTime> it : l) {
-            System.out.println(it.getKey());
+            System.out.println(it.getKey().toString() + "    " + it.getValue());
             nv.add(it.getKey());
         }
 
@@ -78,6 +83,7 @@ public class HamDungChung{
                 return arg0.getDoanhSo().compareTo(arg1.getDoanhSo());
             }
         });
+        System.out.println("Danh sach khach hang theo doanh thu");
         for (KhachHang k : kh) {
             k.xuat();
         }

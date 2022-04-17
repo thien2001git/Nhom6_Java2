@@ -29,6 +29,17 @@ public class Main {
         // menu
         QuanLyKhachHang qLyKhachHang = new QuanLyKhachHang();
         QuanLyNhanVien quanLyNhanVien = new QuanLyNhanVien();
+        qLyKhachHang.dsKhachHang.add(new KhachHang("KH01","Liu Von Man",12.f));
+        qLyKhachHang.dsKhachHang.add(new KhachHang("KH02","Rin Vyn Fun",15.f));
+        qLyKhachHang.dsKhachHang.add(new KhachHang("KH03","Tip Run Ken",1255.f));
+        qLyKhachHang.dsKhachHang.add(new KhachHang("KH04","Pem Pen Hin",1244.f));
+        
+        quanLyNhanVien.dsNhanVien.add(new NhanVien("NV01", "Jin Hun Kin"));
+        quanLyNhanVien.dsNhanVien.add(new NhanVien("NV02", "Jin Hun Tan"));
+        quanLyNhanVien.dsNhanVien.add(new NhanVien("NV03", "Jin Hun Tun"));
+        quanLyNhanVien.dsNhanVien.add(new NhanVien("NV04", "Tin Lun Ven"));
+        quanLyNhanVien.dsNhanVien.add(new NhanVien("NV05", "Tin Lun Ven"));
+        quanLyNhanVien.dsNhanVien.add(new NhanVien("NV061", "Jin Yun Gon"));
         Scanner scn = new Scanner(System.in);
         while (true) {
             System.out.println("Menu");
@@ -46,6 +57,8 @@ public class Main {
             System.out.println("11. Dem so ten nhan vien");
             System.out.println("12. Dang ky du lich");
             System.out.println("13. Xuat khach hang da xep doanh thu");
+            System.out.println("14. Tim kiem ten hoac ma nhan vien");
+            System.out.println("15. Tim kiem ten hoac ma khach hang");
             Integer i = -1;
             try {
                 i = Integer.parseInt(scn.nextLine());
@@ -139,13 +152,22 @@ public class Main {
                         HashMap<NhanVien, LocalDateTime> dsDangKy = new HashMap<>();
                         Random rd = new Random();
                         for (int j = 0; j < quanLyNhanVien.dsNhanVien.size(); j++) {
-                            LocalDateTime lc = LocalDateTime.now();
+                            LocalDateTime lc = LocalDateTime.of(2022, rd.nextInt(1, 13), rd.nextInt(1, 29), rd.nextInt(24), rd.nextInt(61), rd.nextInt(61));
                             dsDangKy.put(quanLyNhanVien.dsNhanVien.get(j), lc);
                         }
                         HamDungChung.dsDangKyDuLich(dsDangKy);
                         break;
                     case 13:
                         HamDungChung.xuatDsKhachHang(qLyKhachHang.dsKhachHang);
+                    case 14:
+                        System.out.println("Nhap ten hoac ma nhan vien can tim");
+                        String ten = scn.nextLine();
+                        quanLyNhanVien.find(ten);
+                        break;
+                    case 15:
+                        System.out.println("Nhap ten hoac ma khach hang can tim");
+                        ten = scn.nextLine();
+                        qLyKhachHang.find(ten);
                         break;
                     default:
                         break;
