@@ -5,14 +5,14 @@
 package TrueLove;
 
 import java.util.ArrayList;
-
+import java.util.Scanner;
 
 /**
  *
  * @author hxt
  */
-public class QuanLyKhachHang implements IQuanLy{
-//    tạo danh sách khách hàng và các hàm thêm, sửa, xóa, tìm kiếm cho khách hàng
+public class QuanLyKhachHang implements IQuanLy {
+    // tạo danh sách khách hàng và các hàm thêm, sửa, xóa, tìm kiếm cho khách hàng
     public ArrayList<KhachHang> dsKhachHang;
 
     public QuanLyKhachHang(ArrayList<KhachHang> dsKhachHang) {
@@ -21,22 +21,67 @@ public class QuanLyKhachHang implements IQuanLy{
 
     public QuanLyKhachHang() {
     }
-//    thêm 
-    public void add(){
-        
-    }
-//    sửa có thể return cái đối tượng đã sửa
-    public void update(int index, Object kh){
-        
-    }
-//   hàm xóa: có thể return cái đối tượng đã xóa
-    public void remove(){
+
+    // thêm
+    @Override
+    public void add() {
+        if (dsKhachHang == null) {
+            dsKhachHang = new ArrayList<KhachHang>();
+        }
+
+        Scanner sc = new Scanner(System.in);
+        int soKH = 0;
+        System.out.println("Nhap so KH");
+        try {
+            soKH = sc.nextInt();
+            if (soKH <= 0) {
+                throw new Exception("");
+            }
+        } catch (Exception e) {
+            System.out.println("Nhập số nguyên lớn hơn 0");
+        }
+        if (soKH > 0) {
+            for (int i = 0; i < soKH; i++) {
+                KhachHang khachhang = new KhachHang();
+                try {
+                    khachhang.nhap();
+                    dsKhachHang.add(khachhang);
+                } catch (Exception e) {
+                    System.out.println("Nhập sai kiểu dữ liệu");
+                    e.printStackTrace();
+                }
+
+            }
+        }
 
     }
-//    hàm tìm kiếm: có thể tìm kiếm theo 1 hoặc nhiều thuộc tính trong đối tượng
-    public ArrayList<KhachHang> find(){
-        return null;
+
+    // in ds ra
+    public void xuat() {
+        for (int i = 0; i < dsKhachHang.size(); i++) {
+            dsKhachHang.get(i).xuat();
+        }
     }
 
-    
+    // thay thế phần tử bằng vị trí
+    @Override
+    public void update(int index, Object kh) {
+        KhachHang sua = (KhachHang) kh;
+        dsKhachHang.set(index, sua);
+    }
+
+    // pt xóa bằng vị trí trong ds
+    @Override
+    public void remove(int i) {
+        KhachHang khachhang = new KhachHang();
+        dsKhachHang.remove(i);
+    }
+
+    // pt tìm kiếm: tìm kiếm bằng mã khách hàng
+    @Override
+    public ArrayList<KhachHang> find(Object obj) {
+        String maKH = (String) obj;
+        return (ArrayList<KhachHang>) dsKhachHang.stream().filter(c -> c.getMaKH().contains(maKH));
+    }
+
 }
