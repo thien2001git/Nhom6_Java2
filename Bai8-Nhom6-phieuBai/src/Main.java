@@ -1,3 +1,7 @@
+import java.util.Scanner;
+
+import TrueLove.KhachHang;
+import TrueLove.NhanVien;
 import TrueLove.QuanLyKhachHang;
 import TrueLove.QuanLyNhanVien;
 
@@ -19,8 +23,10 @@ public class Main {
         // menu
         QuanLyKhachHang qLyKhachHang = new QuanLyKhachHang();
         QuanLyNhanVien quanLyNhanVien = new QuanLyNhanVien();
+        Scanner scn = new Scanner(System.in);
         while (true) {
             System.out.println("Menu");
+            System.out.println("0. Thoát");
             System.out.println("1. Them nhan vien");
             System.out.println("2. Xoa nhan vien");
             System.out.println("3. Sua nhan vien");
@@ -29,9 +35,84 @@ public class Main {
             System.out.println("6. Xoa khach hang");
             System.out.println("7. Sua khach hang");
             System.out.println("8. Xem danh sach khach hang");
-           
+            Integer i = -1;
+            try {
+                i = Integer.parseInt(scn.nextLine());
+            } catch (Exception e) {
+                System.out.println("Nhập số như menu");
+            }
+            if (i != -1) {
+                switch (i) {
+                    case 0:
+                        System.exit(0);
+                        break;
+                    case 1:
+                        quanLyNhanVien.add();
+                        break;
+                    case 2:
+                        Integer index = -1;
+                        try {
+                            System.out.println("Nhap thu tu xoa");
+                            index = Integer.parseInt(scn.nextLine());
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                        quanLyNhanVien.remove(index);
+                        break;
+                    case 3:
+                        NhanVien nv = new NhanVien();
+                        index = -1;
+                        try {
+                            System.out.println("Nhap thu tu sua");
+                            index = Integer.parseInt(scn.nextLine());
+                            nv.nhap();
+                            if (nv.getMaNV().isBlank() || nv.getTenNV().isBlank()) {
+                                throw new Exception("Trống tên hoặc mã nhân viên");
+                            }
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                        quanLyNhanVien.update(index, nv);
+                        ;
+                        break;
+                    case 4:
+                        quanLyNhanVien.xuat();
+                        break;
+                    case 5:
+                        qLyKhachHang.add();
+                        break;
+                    case 6:
+                        index = -1;
+                        try {
+                            System.out.println("Nhap thu tu xoa");
+                            index = Integer.parseInt(scn.nextLine());
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                        qLyKhachHang.remove(index);
+                        break;
+                    case 7:
+                        KhachHang it = new KhachHang();
+                        index = -1;
+                        try {
+                            System.out.println("Nhap thu tu sua");
+                            index = Integer.parseInt(scn.nextLine());
+                            it.nhap();
+                        } catch (Exception e) {
+                            System.out.println("Nhập sai kiểu dữ liệu");
+                            e.printStackTrace();
+                        }
+                        qLyKhachHang.update(index, it);
+                        break;
+                    case 8:
+                        qLyKhachHang.xuat();
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
     }
-    
+
 }

@@ -43,10 +43,7 @@ public class QuanLyNhanVien implements IQuanLy {
             for (int i = 0; i < sonv; i++) {
                 try {
                     NhanVien nv = new NhanVien();
-                    System.out.println("Nhap ma nhan vien");
-                    nv.setMaNV(scn.nextLine());
-                    System.out.println("Nhap ten nhan vien");
-                    nv.setTenNV(scn.nextLine());
+                    nv.nhap();
                     if (nv.getMaNV().isBlank() || nv.getTenNV().isBlank()) {
                         throw new Exception("Trống tên hoặc mã nhân viên");
                     }
