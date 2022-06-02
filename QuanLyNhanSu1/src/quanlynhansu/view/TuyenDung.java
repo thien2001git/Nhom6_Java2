@@ -79,7 +79,7 @@ public class TuyenDung extends javax.swing.JFrame {
 //            if(nc.compareTo(Date.from(Instant.now())) < 0) {
 //                
 //            }
-            if (ns.getYear() - LocalDate.now().getYear() < 18) {
+            if (LocalDate.now().getYear() - ns.getYear() < 18) {
                 JOptionPane.showMessageDialog(this,
                         "Tuoi phai lon hon 18",
                         "Thong bao", JOptionPane.PLAIN_MESSAGE);
@@ -137,7 +137,8 @@ public class TuyenDung extends javax.swing.JFrame {
             Date ns = tNgaySinh1.getDate();
 //            Date nc = tNgayCap.getDate();
 
-            if (ns.getYear() - LocalDate.now().getYear() < 18) {
+            if (LocalDate.now().getYear() - ns.getYear() < 18) {
+//                System.out.println(ns.getYear() - LocalDate.now().getYear());
                 JOptionPane.showMessageDialog(this,
                         "Tuoi phai lon hon 18",
                         "Thong bao", JOptionPane.PLAIN_MESSAGE);

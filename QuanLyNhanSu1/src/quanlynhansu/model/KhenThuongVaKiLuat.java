@@ -5,6 +5,7 @@
 package quanlynhansu.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -22,6 +23,44 @@ public class KhenThuongVaKiLuat implements Serializable {
         this.ten = ten;
         this.lyDo = lyDo;
         this.chiTiet = chiTiet;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        hash = 41 * hash + Objects.hashCode(this.ten);
+        hash = 41 * hash + Objects.hashCode(this.lyDo);
+        hash = 41 * hash + Objects.hashCode(this.chiTiet);
+        hash = 41 * hash + Objects.hashCode(this.loai);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final KhenThuongVaKiLuat other = (KhenThuongVaKiLuat) obj;
+        if (!Objects.equals(this.ten, other.ten)) {
+            return false;
+        }
+        if (!Objects.equals(this.lyDo, other.lyDo)) {
+            return false;
+        }
+        if (!Objects.equals(this.chiTiet, other.chiTiet)) {
+            return false;
+        }
+        if (!Objects.equals(this.loai, other.loai)) {
+            return false;
+        }
+        return Objects.equals(this.id, other.id);
     }
 
     public KhenThuongVaKiLuat(Integer id, String ten, String lyDo, String chiTiet, String loai) {

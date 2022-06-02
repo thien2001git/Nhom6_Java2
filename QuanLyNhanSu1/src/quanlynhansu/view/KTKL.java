@@ -33,11 +33,28 @@ public class KTKL extends javax.swing.JFrame {
         dsC = new ArrayList<>();
         dsdf.add(new KhenThuongVaKiLuat("Day gioi", "90% sinh vien gioi", "Thuong 500k", "Khen Thuong"));
         dsdf.add(new KhenThuongVaKiLuat("Khong nghi day", "100% đi day", "Thuong 800k", "Khen Thuong"));
-        dsdf.add(new KhenThuongVaKiLuat("Nghi day qua so buoi", "50% khong đi day", "Phat 500k", "Ki luat"));
+        dsdf.add(new KhenThuongVaKiLuat("Nghi day qua so buoi", "4 ngay khong đi day", "Phat 500k", "Ki luat"));
         dsdf.add(new KhenThuongVaKiLuat("Danh sinh vien", "Gay thuong tich cho sinh vien", "Duoi viec", "Ki luat"));
         try {
             dsNS = (ArrayList<NhanSu>) ReadWriteObject.ReadObject("NhanSu.bin");
             dskk = (ArrayList<KhenThuongVaKiLuat>) ReadWriteObject.ReadObject("Ktkl.bin");
+            for (Iterator<NhanSu> iterator = dsNS.iterator(); iterator.hasNext();) {
+                NhanSu next = iterator.next();
+                KhenThuongVaKiLuat kiLuat = new KhenThuongVaKiLuat(next.getId(), "Nghi day qua so buoi", "50% khong đi day", "Phat 500k", "Ki luat");
+                KhenThuongVaKiLuat khen = new KhenThuongVaKiLuat(next.getId(), "Khong nghi day", "100% đi day", "Thuong 800k", "Khen Thuong");
+                if (next.getSongaycong() < 26) {
+                    if (!dskk.contains(kiLuat)) {
+                        dskk.add(kiLuat);
+                    }
+                }
+                if (next.getSongaycong() > 27) {
+                    if (!dskk.contains(khen)) {
+                        dskk.add(khen);
+                    }
+//                    dskk.add();
+                }
+            }
+
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(NhanSuJ.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -86,7 +103,6 @@ public class KTKL extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
         tabSua = new javax.swing.JTabbedPane();
@@ -127,9 +143,6 @@ public class KTKL extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton7);
-
-        jButton1.setText("Quyet dinh");
-        jPanel2.add(jButton1);
 
         jScrollPane2.setViewportView(jPanel2);
 
@@ -251,7 +264,7 @@ public class KTKL extends javax.swing.JFrame {
             for (Iterator<KhenThuongVaKiLuat> iterator = dskk.iterator(); iterator.hasNext();) {
                 KhenThuongVaKiLuat next = iterator.next();
                 if (next.getId() == dskk.get(dongChon).getId()) {
-                    if(next.getLoai().equals("Ki luat")) {
+                    if (next.getLoai().equals("Ki luat")) {
                         skl++;
                     } else {
                         skt++;
@@ -368,7 +381,6 @@ public class KTKL extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane Sua;
     private javax.swing.JScrollPane ThongTin;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel33;
