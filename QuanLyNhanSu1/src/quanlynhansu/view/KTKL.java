@@ -25,12 +25,16 @@ public class KTKL extends javax.swing.JFrame {
     Integer dongChon = -1;
     ArrayList<NhanSu> dsNS;
     ArrayList<KhenThuongVaKiLuat> dskk = new ArrayList<>();
+    ArrayList<KhenThuongVaKiLuat> dsdf = new ArrayList<>();
     ArrayList<javax.swing.JCheckBox> dsC;
 
     public KTKL() {
         initComponents();
         dsC = new ArrayList<>();
-
+        dsdf.add(new KhenThuongVaKiLuat("Day gioi", "90% sinh vien gioi", "Thuong 500k", "Khen Thuong"));
+        dsdf.add(new KhenThuongVaKiLuat("Khong nghi day", "100% đi day", "Thuong 800k", "Khen Thuong"));
+        dsdf.add(new KhenThuongVaKiLuat("Nghi day qua so buoi", "50% khong đi day", "Phat 500k", "Ki luat"));
+        dsdf.add(new KhenThuongVaKiLuat("Danh sinh vien", "Gay thuong tich cho sinh vien", "Duoi viec", "Ki luat"));
         try {
             dsNS = (ArrayList<NhanSu>) ReadWriteObject.ReadObject("NhanSu.bin");
             dskk = (ArrayList<KhenThuongVaKiLuat>) ReadWriteObject.ReadObject("Ktkl.bin");
@@ -39,9 +43,9 @@ public class KTKL extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(NhanSuJ.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        for (int i = 0; i < dskk.size(); i++) {
+        for (int i = 0; i < dsdf.size(); i++) {
             javax.swing.JCheckBox cc = new javax.swing.JCheckBox();
-            cc.setText(dskk.get(i).toString());
+            cc.setText(dsdf.get(i).toString());
             cc.setEnabled(true);
             dsC.add(cc);
             sSuaSuKien.add(cc);
@@ -53,7 +57,7 @@ public class KTKL extends javax.swing.JFrame {
 
         jTable2.setModel(new TableKTKL(dsNS, dskk));
         try {
-            ReadWriteObject.WriteObject("NhanSu.bin", dsNS);
+            ReadWriteObject.WriteObject("Ktkl.bin", dskk);
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(NhanSuJ.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
@@ -77,11 +81,13 @@ public class KTKL extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jSplitPane2 = new javax.swing.JSplitPane();
         tabSua = new javax.swing.JTabbedPane();
         ThongTin = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -90,6 +96,8 @@ public class KTKL extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ttDem = new javax.swing.JTextPane();
         Sua = new javax.swing.JScrollPane();
         jPanel5 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
@@ -100,8 +108,16 @@ public class KTKL extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         sSuaSuKien = new javax.swing.JPanel();
         sBTN = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Khen thuong va ki luat");
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
+
+        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
         jButton7.setText("Quay lai");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -113,26 +129,18 @@ public class KTKL extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jPanel2);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable2MouseClicked(evt);
-            }
-        });
-        jScrollPane4.setViewportView(jTable2);
+        jPanel1.add(jScrollPane2);
+
+        jSplitPane1.setLeftComponent(jPanel1);
+
+        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
+
+        jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         tabSua.setToolTipText("Chi tiet");
+        tabSua.setPreferredSize(new java.awt.Dimension(518, 300));
 
+        jPanel3.setPreferredSize(new java.awt.Dimension(516, 100));
         jPanel3.setLayout(new java.awt.GridLayout(3, 1));
 
         ttId.setText("ID:");
@@ -148,10 +156,16 @@ public class KTKL extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane1);
 
+        ttDem.setEditable(false);
+        jScrollPane3.setViewportView(ttDem);
+
+        jPanel3.add(jScrollPane3);
+
         ThongTin.setViewportView(jPanel3);
 
         tabSua.addTab("Chi tiet luong", ThongTin);
 
+        jPanel5.setPreferredSize(new java.awt.Dimension(144, 100));
         jPanel5.setLayout(new java.awt.GridLayout(4, 6));
 
         jLabel33.setText("Id");
@@ -171,35 +185,44 @@ public class KTKL extends javax.swing.JFrame {
         jPanel5.add(jScrollPane5);
 
         sBTN.setText("Sua");
+        sBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sBTNActionPerformed(evt);
+            }
+        });
         jPanel5.add(sBTN);
 
         Sua.setViewportView(jPanel5);
 
         tabSua.addTab("Sua", Sua);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(tabSua)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tabSua)
-                .addContainerGap())
-        );
+        jSplitPane2.setLeftComponent(tabSua);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTable2);
+
+        jSplitPane2.setRightComponent(jScrollPane4);
+
+        jPanel4.add(jSplitPane2);
+
+        jSplitPane1.setRightComponent(jPanel4);
+
+        getContentPane().add(jSplitPane1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -220,6 +243,18 @@ public class KTKL extends javax.swing.JFrame {
         if (dongChon != -1) {
             ttId.setText("ID: " + dskk.get(dongChon).getId().toString());
             ttTen.setText("Ho ten: " + getHoTen(dskk.get(dongChon).getId()));
+            Integer skt = 0, skl = 0;
+            for (Iterator<KhenThuongVaKiLuat> iterator = dskk.iterator(); iterator.hasNext();) {
+                KhenThuongVaKiLuat next = iterator.next();
+                if (next.getId() == dskk.get(dongChon).getId()) {
+                    if(next.getLoai().equals("Ki luat")) {
+                        skl++;
+                    } else {
+                        skt++;
+                    }
+                }
+            }
+            ttDem.setText(String.format("So khen thuong: %d\nSo ki luat: %d", skt, skl));
 
             ArrayList<String> k2 = new ArrayList<>();
             for (Iterator<KhenThuongVaKiLuat> iterator = dskk.iterator(); iterator.hasNext();) {
@@ -236,12 +271,12 @@ public class KTKL extends javax.swing.JFrame {
 //            sSuaSuKien.remove;
             for (Iterator<javax.swing.JCheckBox> iterator = dsC.iterator(); iterator.hasNext();) {
                 javax.swing.JCheckBox next = iterator.next();
-                if(k2.contains(next.getText())) {
-                    if(next.isSelected() == false) {
+                if (k2.contains(next.getText())) {
+                    if (next.isSelected() == false) {
                         next.doClick();
                     }
                 } else {
-                    if(next.isSelected() == true) {
+                    if (next.isSelected() == true) {
                         next.doClick();
                     }
                 }
@@ -252,6 +287,44 @@ public class KTKL extends javax.swing.JFrame {
             sTen.setText(getHoTen(dskk.get(dongChon).getId()));
         }
     }//GEN-LAST:event_jTable2MouseClicked
+
+    private void sBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sBTNActionPerformed
+        // TODO add your handling code here:
+        if (dongChon != -1) {
+            Integer id = dskk.get(dongChon).getId();
+            ArrayList<KhenThuongVaKiLuat> x = new ArrayList<>();
+            for (Iterator<KhenThuongVaKiLuat> iterator = dskk.iterator(); iterator.hasNext();) {
+                KhenThuongVaKiLuat next = iterator.next();
+                if (next.getId().equals(id)) {
+                    x.add(next);
+                }
+            }
+            dskk.removeAll(x);
+            System.out.println("quanlynhansu.view.KTKL.sBTNActionPerformed()" + dskk.size());
+            ArrayList<String> k2 = new ArrayList<>();
+            for (Iterator<KhenThuongVaKiLuat> iterator = dsdf.iterator(); iterator.hasNext();) {
+                KhenThuongVaKiLuat next = iterator.next();
+
+                k2.add(next.toString());
+
+            }
+
+            for (int i = 0; i < k2.size(); i++) {
+
+                javax.swing.JCheckBox next = dsC.get(i);
+                if (k2.contains(next.getText())) {
+                    if (next.isSelected() == true) {
+                        KhenThuongVaKiLuat k = dsdf.get(i);
+                        k.setId(id);
+                        dskk.add(k);
+                    }
+                }
+
+            }
+            System.out.println("quanlynhansu.view.KTKL.sBTNActionPerformed()" + dskk.size());
+            updateTable();
+        }
+    }//GEN-LAST:event_sBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,19 +370,25 @@ public class KTKL extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JButton sBTN;
     private javax.swing.JLabel sID;
     private javax.swing.JPanel sSuaSuKien;
     private javax.swing.JLabel sTen;
     private javax.swing.JTabbedPane tabSua;
+    private javax.swing.JTextPane ttDem;
     private javax.swing.JLabel ttId;
     private javax.swing.JLabel ttTen;
     // End of variables declaration//GEN-END:variables

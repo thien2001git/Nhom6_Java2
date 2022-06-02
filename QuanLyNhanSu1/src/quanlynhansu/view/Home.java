@@ -33,6 +33,8 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
+        setPreferredSize(new java.awt.Dimension(300, 200));
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(4, 0));
 
         td.setText("Tuyen dung");

@@ -15,9 +15,9 @@ import quanlynhansu.model.NhanSu;
  */
 public class TableKTKL extends AbstractTableModel {
 
-    private String name[] = {"ID", "Su kien", "Ho ten"};
+    private String name[] = {"ID", "Su kien", "Ho ten", "Loai"};
     //Khai báo lớp Chứa kiểu dữ liệu của từng trường tương ứng.
-    private Class classes[] = {Integer.class, String.class, String.class};
+    private Class classes[] = {Integer.class, String.class, String.class, String.class};
     
     ArrayList<KhenThuongVaKiLuat> ds;
     ArrayList<NhanSu> dsNS;
@@ -55,6 +55,8 @@ public class TableKTKL extends AbstractTableModel {
                 return ds.get(rowIndex).getTen();
             case 2:
                 return getHoTen(ds.get(rowIndex).getId());
+            case 3:
+                return ds.get(rowIndex).getLoai();
            
 
             default:

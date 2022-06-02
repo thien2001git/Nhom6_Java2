@@ -12,6 +12,10 @@ import java.io.Serializable;
  */
 public class KhenThuongVaKiLuat implements Serializable {
     private Integer id;
+     private String ten;
+    private String lyDo;
+    private String chiTiet;
+    private String loai;
 
     public KhenThuongVaKiLuat(Integer id, String ten, String lyDo, String chiTiet) {
         this.id = id;
@@ -20,21 +24,43 @@ public class KhenThuongVaKiLuat implements Serializable {
         this.chiTiet = chiTiet;
     }
 
+    public KhenThuongVaKiLuat(Integer id, String ten, String lyDo, String chiTiet, String loai) {
+        this.id = id;
+        this.ten = ten;
+        this.lyDo = lyDo;
+        this.chiTiet = chiTiet;
+        this.loai = loai;
+    }
+    public KhenThuongVaKiLuat(String ten, String lyDo, String chiTiet, String loai) {
+//        this.id = id;
+        this.ten = ten;
+        this.lyDo = lyDo;
+        this.chiTiet = chiTiet;
+        this.loai = loai;
+    }
+
+    public String getLoai() {
+        return loai;
+    }
+
+    public void setLoai(String loai) {
+        this.loai = loai;
+    }
+    
+
     public Integer getId() {
         return id;
     }
 
     @Override
     public String toString() {
-        return ten + " - " + lyDo + " - " + chiTiet;
+        return loai + " - " + ten + " - " + lyDo + " - " + chiTiet;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
-    private String ten;
-    private String lyDo;
-    private String chiTiet;
+   
 
     public KhenThuongVaKiLuat(String ten, String lyDo, String chiTiet) {
         this.ten = ten;

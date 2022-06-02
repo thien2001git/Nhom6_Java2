@@ -78,10 +78,10 @@ public class QuanLyNhanSu {
 //            Logger.getLogger(QuanLyNhanSu.class.getName()).log(Level.SEVERE, null, ex);
 //        }
         ArrayList<KhenThuongVaKiLuat> ktkl = new ArrayList<>();
-        ktkl.add(new KhenThuongVaKiLuat(1, "Day gioi", "90% sinh vien gioi", "Thuong 500k"));
-        ktkl.add(new KhenThuongVaKiLuat(2, "Khong nghi day", "100% đi day", "Thuong 800k"));
-        ktkl.add(new KhenThuongVaKiLuat(1, "Nghi day qua so buoi", "50% khong đi day", "Phat 500k"));
-        ktkl.add(new KhenThuongVaKiLuat(2, "Danh sinh vien", "Gay thuong tich cho sinh vien", "Duoi viec"));
+        ktkl.add(new KhenThuongVaKiLuat(1, "Day gioi", "90% sinh vien gioi", "Thuong 500k","Khen Thuong"));
+        ktkl.add(new KhenThuongVaKiLuat(2, "Khong nghi day", "100% đi day", "Thuong 800k", "Khen Thuong"));
+        ktkl.add(new KhenThuongVaKiLuat(1, "Nghi day qua so buoi", "50% khong đi day", "Phat 500k", "Ki luat"));
+        ktkl.add(new KhenThuongVaKiLuat(2, "Danh sinh vien", "Gay thuong tich cho sinh vien", "Duoi viec", "Ki luat"));
         try {
 //            File f = new File("Ktkl.bin");
 //            f.createNewFile();
