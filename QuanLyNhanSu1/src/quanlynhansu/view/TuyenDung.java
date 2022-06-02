@@ -1,6 +1,7 @@
 package quanlynhansu.view;
 
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Instant;
@@ -628,9 +629,11 @@ public class TuyenDung extends javax.swing.JFrame {
 //            File f = new File("Nguoi.bin");
 //            f.createNewFile();
 //            ns1 = (ArrayList<Nguoi>) ReadWriteObject.ReadObject("Nguoi.bin");
-
-                ns2 = (ArrayList<NhanSu>) ReadWriteObject.ReadObject("NhanSu.bin");
-                if (ns2 != null) {
+                File f = new File("NhanSu.bin");
+                
+                if (f.length() > 0) {
+                    
+                    ns2 = (ArrayList<NhanSu>) ReadWriteObject.ReadObject("NhanSu.bin");
                     if (ns2.contains(ns)) {
                         JOptionPane.showMessageDialog(this,
                                 "Ban da tuyen nguoi nay truoc do",
@@ -643,20 +646,25 @@ public class TuyenDung extends javax.swing.JFrame {
                         ReadWriteObject.WriteObject("NhanSu.bin", ns2);
                     }
                 } else {
-                    System.out.println("quanlynhansu.view.TuyenDung.tuyenActionPerformed() ns2 null");
+                    ns2 = new ArrayList<>();
+                    JOptionPane.showMessageDialog(this,
+                            "Ban da tuyen thanh cong",
+                            "Thong bao", JOptionPane.PLAIN_MESSAGE);
+                    ns2.add(ns);
+                    ReadWriteObject.WriteObject("NhanSu.bin", ns2);
                 }
 
-            } catch (EOFException ex) {
-//                Logger.getLogger(QuanLyNhanSu.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this,
-                        "Ban da tuyen thanh cong",
-                        "Thong bao", JOptionPane.PLAIN_MESSAGE);
-                ns2.add(ns);
-                try {
-                    ReadWriteObject.WriteObject("NhanSu.bin", ns2);
-                } catch (IOException ex1) {
-                    Logger.getLogger(TuyenDung.class.getName()).log(Level.SEVERE, null, ex1);
-                }
+            //} catch (EOFException ex) {
+                //Logger.getLogger(QuanLyNhanSu.class.getName()).log(Level.SEVERE, null, ex);
+//                JOptionPane.showMessageDialog(this,
+//                        "Ban da tuyen thanh cong",
+//                        "Thong bao", JOptionPane.PLAIN_MESSAGE);
+//                ns2.add(ns);
+//                try {
+//                    ReadWriteObject.WriteObject("NhanSu.bin", ns2);
+//                } catch (IOException ex1) {
+//                    Logger.getLogger(TuyenDung.class.getName()).log(Level.SEVERE, null, ex1);
+//                }
 
             } catch (IOException ex) {
                 Logger.getLogger(QuanLyNhanSu.class.getName()).log(Level.SEVERE, null, ex);
