@@ -3,6 +3,7 @@ package quanlynhansu.view;
 import java.io.EOFException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
@@ -71,30 +72,41 @@ public class TuyenDung extends javax.swing.JFrame {
                     "Ban da nhap thieu thong tin",
                     "Thong bao", JOptionPane.PLAIN_MESSAGE);
         } else {
+
             Date ns = tNgaySinh.getDate();
+            Date nc = tNgayCap.getDate();
 //            Date nc = tNgayCap.getDate();
-            Nguoi n = new Nguoi(dsN.get(dsN.size() - 1).getId() + 1,
-                    tGioiTinh.getSelectedIndex() == 0 ? true : false,
-                    ns.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-                    tNgayCap.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-                    tTen.getText(),
-                    tSDT.getText(),
-                    tEmail.getText(),
-                    tDiaChi.getText(),
-                    tGhiChu.getText(),
-                    tTrinhDo.getText(),
-                    tNoiHoc.getText(),
-                    tXepLoai.getText(),
-                    tViTri.getText(),
-                    tChuyenNganh.getText(),
-                    tCMND.getText(),
-                    tDanToc.getText(),
-                    tTonGiao.getText());
-            dsN.add(n);
-            JOptionPane.showMessageDialog(this,
-                    "Ban da them thanh cong",
-                    "Thong bao", JOptionPane.PLAIN_MESSAGE);
-            updateTable();
+//            if(nc.compareTo(Date.from(Instant.now())) < 0) {
+//                
+//            }
+            if (ns.getYear() - LocalDate.now().getYear() < 18) {
+                JOptionPane.showMessageDialog(this,
+                        "Tuoi phai lon hon 18",
+                        "Thong bao", JOptionPane.PLAIN_MESSAGE);
+            } else {
+                Nguoi n = new Nguoi(dsN.get(dsN.size() - 1).getId() + 1,
+                        tGioiTinh.getSelectedIndex() == 0 ? true : false,
+                        ns.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                        tNgayCap.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                        tTen.getText(),
+                        tSDT.getText(),
+                        tEmail.getText(),
+                        tDiaChi.getText(),
+                        tGhiChu.getText(),
+                        tTrinhDo.getText(),
+                        tNoiHoc.getText(),
+                        tXepLoai.getText(),
+                        tViTri.getText(),
+                        tChuyenNganh.getText(),
+                        tCMND.getText(),
+                        tDanToc.getText(),
+                        tTonGiao.getText());
+                dsN.add(n);
+                JOptionPane.showMessageDialog(this,
+                        "Ban da them thanh cong",
+                        "Thong bao", JOptionPane.PLAIN_MESSAGE);
+                updateTable();
+            }
             try {
                 ReadWriteObject.WriteObject("Nguoi.bin", dsN);
             } catch (IOException ex) {
@@ -124,29 +136,36 @@ public class TuyenDung extends javax.swing.JFrame {
         } else {
             Date ns = tNgaySinh1.getDate();
 //            Date nc = tNgayCap.getDate();
-            Nguoi n = new Nguoi(Integer.parseInt(sID.getText()),
-                    tGioiTinh1.getSelectedIndex() == 0 ? true : false,
-                    tNgaySinh1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-                    tNgayCap1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-                    tTen1.getText(),
-                    tSDT1.getText(),
-                    tEmail1.getText(),
-                    tDiaChi1.getText(),
-                    tGhiChu1.getText(),
-                    tTrinhDo1.getText(),
-                    tNoiHoc1.getText(),
-                    tXepLoai1.getText(),
-                    tViTri1.getText(),
-                    tChuyenNganh1.getText(),
-                    tCMND1.getText(),
-                    tDanToc1.getText(),
-                    tTonGiao1.getText());
-            dsN.set(dongChon, n);
 
-            JOptionPane.showMessageDialog(this,
-                    "Ban da cap nhat thanh cong",
-                    "Thong bao", JOptionPane.PLAIN_MESSAGE);
-            updateTable();
+            if (ns.getYear() - LocalDate.now().getYear() < 18) {
+                JOptionPane.showMessageDialog(this,
+                        "Tuoi phai lon hon 18",
+                        "Thong bao", JOptionPane.PLAIN_MESSAGE);
+            } else {
+                Nguoi n = new Nguoi(Integer.parseInt(sID.getText()),
+                        tGioiTinh1.getSelectedIndex() == 0 ? true : false,
+                        tNgaySinh1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                        tNgayCap1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                        tTen1.getText(),
+                        tSDT1.getText(),
+                        tEmail1.getText(),
+                        tDiaChi1.getText(),
+                        tGhiChu1.getText(),
+                        tTrinhDo1.getText(),
+                        tNoiHoc1.getText(),
+                        tXepLoai1.getText(),
+                        tViTri1.getText(),
+                        tChuyenNganh1.getText(),
+                        tCMND1.getText(),
+                        tDanToc1.getText(),
+                        tTonGiao1.getText());
+                dsN.set(dongChon, n);
+
+                JOptionPane.showMessageDialog(this,
+                        "Ban da cap nhat thanh cong",
+                        "Thong bao", JOptionPane.PLAIN_MESSAGE);
+                updateTable();
+            }
             try {
                 ReadWriteObject.WriteObject("Nguoi.bin", dsN);
             } catch (IOException ex) {
@@ -284,6 +303,11 @@ public class TuyenDung extends javax.swing.JFrame {
         jPanel1.add(tuyen);
 
         jButton3.setText("Xoa");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3);
 
         jButton4.setText("Quay lai");
@@ -659,6 +683,28 @@ public class TuyenDung extends javax.swing.JFrame {
     private void tGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tGioiTinhActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tGioiTinhActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if (dongChon != -1) {
+//            JOptionPane.showMessageDialog(this,
+//                    "Ban muon xoa chu",
+//                    "Thong bao", JOptionPane.PLAIN_MESSAGE);
+            if (JOptionPane.showConfirmDialog(null, "Ban muon xoa chu?", "WARNING",
+                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                // yes option
+                dsN.remove(dongChon);
+
+                updateTable();
+                try {
+                    ReadWriteObject.WriteObject("Nguoi.bin", dsN);
+                } catch (IOException ex) {
+                    Logger.getLogger(TuyenDung.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

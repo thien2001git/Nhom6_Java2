@@ -86,6 +86,7 @@ public class KTKL extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
         tabSua = new javax.swing.JTabbedPane();
@@ -127,6 +128,9 @@ public class KTKL extends javax.swing.JFrame {
         });
         jPanel2.add(jButton7);
 
+        jButton1.setText("Quyet dinh");
+        jPanel2.add(jButton1);
+
         jScrollPane2.setViewportView(jPanel2);
 
         jPanel1.add(jScrollPane2);
@@ -141,7 +145,7 @@ public class KTKL extends javax.swing.JFrame {
         tabSua.setPreferredSize(new java.awt.Dimension(518, 300));
 
         jPanel3.setPreferredSize(new java.awt.Dimension(516, 100));
-        jPanel3.setLayout(new java.awt.GridLayout(3, 1));
+        jPanel3.setLayout(new java.awt.GridLayout(2, 4));
 
         ttId.setText("ID:");
         jPanel3.add(ttId);
@@ -364,6 +368,7 @@ public class KTKL extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane Sua;
     private javax.swing.JScrollPane ThongTin;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel33;
