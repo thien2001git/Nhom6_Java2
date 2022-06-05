@@ -68,6 +68,7 @@ public class KTKL extends javax.swing.JFrame {
             sSuaSuKien.add(cc);
         }
         updateTable();
+        jTable2.setAutoCreateRowSorter(true);
     }
 
     public void updateTable() {

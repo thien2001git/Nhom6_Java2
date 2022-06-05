@@ -127,12 +127,6 @@ public class Login extends javax.swing.JFrame {
                 while (n.hasNext()) {
                     Account next = n.next();
                     String p = new String(jPasswordField1.getPassword());
-//                    System.out.println(p);
-//                    System.out.println(next.getAcc().getPassword() == p);
-
-//                    System.out.println(jTextField1.getText());
-//                    System.out.println(next.getAcc().getUsername());
-//                    System.out.println(next.getAcc().getUsername().equals(jTextField1.getText()));
                     if (next.getPassword().equals(p) && jTextField1.getText().equals(next.getUsername())) {
                         JOptionPane.showMessageDialog(this,
                                 "Dang nhap thanh cong",

@@ -48,6 +48,7 @@ public class NhanSuJ extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(NhanSuJ.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         updateTable();
+        jTable1.setAutoCreateRowSorter(true);
     }
 
     public void updateTable() {
@@ -91,6 +92,7 @@ public class NhanSuJ extends javax.swing.JFrame {
         ttChucVu = new javax.swing.JLabel();
         ttLuong = new javax.swing.JLabel();
         ttNgayVaoLam = new javax.swing.JLabel();
+        ttDemSoNgay = new javax.swing.JLabel();
         ttSoNgayCong = new javax.swing.JLabel();
         ttDiaChi = new javax.swing.JLabel();
         Sua = new javax.swing.JScrollPane();
@@ -191,6 +193,9 @@ public class NhanSuJ extends javax.swing.JFrame {
 
         ttNgayVaoLam.setText("Ngay vao:");
         jPanel3.add(ttNgayVaoLam);
+
+        ttDemSoNgay.setText("So ngay cong hien:");
+        jPanel3.add(ttDemSoNgay);
 
         ttSoNgayCong.setText("So ngay cong:");
         jPanel3.add(ttSoNgayCong);
@@ -438,6 +443,7 @@ public class NhanSuJ extends javax.swing.JFrame {
     private javax.swing.JLabel ttBoPhan;
     private javax.swing.JLabel ttChucDanh;
     private javax.swing.JLabel ttChucVu;
+    private javax.swing.JLabel ttDemSoNgay;
     private javax.swing.JLabel ttDiaChi;
     private javax.swing.JLabel ttId;
     private javax.swing.JLabel ttLuong;

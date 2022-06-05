@@ -31,10 +31,19 @@ public class Luong extends javax.swing.JFrame {
             dsNS = (ArrayList<NhanSu>) ReadWriteObject.ReadObject("NhanSu.bin");
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(NhanSuJ.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this,
+                        "Khong the doc du lieu",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(NhanSuJ.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this,
+                        "Khong the doc du lieu",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
         }
         updateTable();
+        jTable2.setAutoCreateRowSorter(true);
     }
 
     public void updateTable() {
@@ -44,6 +53,10 @@ public class Luong extends javax.swing.JFrame {
             ReadWriteObject.WriteObject("NhanSu.bin", dsNS);
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(NhanSuJ.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this,
+                        "Khong the ghi du lieu",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -244,10 +257,6 @@ public class Luong extends javax.swing.JFrame {
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
-
-//            .setText(l.getLuongcb().toString());
-//            sPhuCap.setText(l.getPhucap().toString());
-//            sSoNgayCong.setValue();
             updateTable();
         }
     }//GEN-LAST:event_sBTNActionPerformed

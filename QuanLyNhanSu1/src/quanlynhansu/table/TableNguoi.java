@@ -15,9 +15,14 @@ import quanlynhansu.model.Nguoi;
  */
 public class TableNguoi extends AbstractTableModel {
 
-    private String name[] = {"ID", "Ten", "Gioi tinh", "Ngay sinh", "SDT", "Email", "Dia chi", "Ghi chu", "Trinh do", "Noi dao tao", "Xep loai", "Vi tri"};
+    private String name[] = {"ID", "Ten", "Gioi tinh", "Ngay sinh", 
+        "SDT", "Email", "Dia chi", "Ghi chu", "Trinh do", 
+        "Noi dao tao", "Xep loai", "Vi tri"};
     //Khai báo lớp Chứa kiểu dữ liệu của từng trường tương ứng.
-    private Class classes[] = {Integer.class, String.class, String.class, LocalDate.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class};
+    private Class classes[] = {Integer.class, String.class, 
+        String.class, LocalDate.class, String.class, String.class, 
+        String.class, String.class, String.class, 
+        String.class, String.class, String.class};
     ArrayList<Nguoi> dsN;
 
     public TableNguoi(ArrayList<Nguoi> dsN) {

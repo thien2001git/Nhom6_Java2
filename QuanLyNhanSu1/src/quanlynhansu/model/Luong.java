@@ -7,13 +7,12 @@ import java.util.Locale;
 
 public class Luong implements Serializable {
 
-    public final Locale localeVN = new Locale("vi", "VN");
-    public final NumberFormat numberFormat = NumberFormat.getCurrencyInstance(localeVN);
-
-//    private int songaycong;
     private Double heso, luongcb, phucap;
     private Double tongluong;
 
+//    public final Locale localeVN = new Locale("vi", "VN");
+//    public final NumberFormat numberFormat = NumberFormat.getCurrencyInstance(localeVN);
+//    private int songaycong;
     public Luong() {
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +33,6 @@ public class Luong implements Serializable {
 //    public void setSongaycong(int songaycong) {
 //        this.songaycong = songaycong;
 //    }
-
     public Double getHeso() {
         return heso;
     }
@@ -64,16 +62,9 @@ public class Luong implements Serializable {
         return tongluong;
     }
 
-  
-
-   
-
-   
-
     @Override
     public String toString() {
         return String.format("%f vnd", getTongluong());
     }
 
-   
 }

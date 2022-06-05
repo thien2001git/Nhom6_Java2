@@ -17,7 +17,9 @@ public class Nguoi implements Serializable {
     private Integer id;
     private Boolean gioiTinh;
     private LocalDate ngaySinh, ngayCap;
-    private String ten, sdt, email, dChi, ghichu, trinhDo, noiDaoTao, xepLoai, viTri, chuyenNganh, cmnd, danToc, tonGiao;
+    private String ten, sdt, email, dChi, ghichu, 
+            trinhDo, noiDaoTao, xepLoai, 
+            viTri, chuyenNganh, cmnd, danToc, tonGiao;
 
     public Nguoi() {
     }

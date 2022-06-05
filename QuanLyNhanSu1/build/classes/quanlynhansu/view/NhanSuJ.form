@@ -176,6 +176,11 @@
                                 <Property name="text" type="java.lang.String" value="Ngay vao:"/>
                               </Properties>
                             </Component>
+                            <Component class="javax.swing.JLabel" name="ttDemSoNgay">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="So ngay cong hien:"/>
+                              </Properties>
+                            </Component>
                             <Component class="javax.swing.JLabel" name="ttSoNgayCong">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="So ngay cong:"/>

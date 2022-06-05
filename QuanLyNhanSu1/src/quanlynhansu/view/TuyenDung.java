@@ -38,15 +38,25 @@ public class TuyenDung extends javax.swing.JFrame {
 
     public TuyenDung() {
         initComponents();
+        
         try {
             dsN = (ArrayList<Nguoi>) ReadWriteObject.ReadObject("Nguoi.bin");
         } catch (IOException ex) {
             Logger.getLogger(TuyenDung.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this,
+                        "Khong the doc du lieu",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TuyenDung.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this,
+                        "Khong the doc du lieu",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
         }
 
         updateTable();
+        jTable1.setAutoCreateRowSorter(true);
     }
 
     public void updateTable() {
@@ -76,11 +86,15 @@ public class TuyenDung extends javax.swing.JFrame {
 
             Date ns = tNgaySinh.getDate();
             Date nc = tNgayCap.getDate();
+            int nss = ns.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear();
 //            Date nc = tNgayCap.getDate();
 //            if(nc.compareTo(Date.from(Instant.now())) < 0) {
 //                
 //            }
-            if (LocalDate.now().getYear() - ns.getYear() < 18) {
+//            System.out.println(LocalDate.now().getYear());
+//            System.out.println(ns.ge);
+            if (LocalDate.now().getYear() - nss < 18) {
+                
                 JOptionPane.showMessageDialog(this,
                         "Tuoi phai lon hon 18",
                         "Thong bao", JOptionPane.PLAIN_MESSAGE);
@@ -112,6 +126,10 @@ public class TuyenDung extends javax.swing.JFrame {
                 ReadWriteObject.WriteObject("Nguoi.bin", dsN);
             } catch (IOException ex) {
                 Logger.getLogger(TuyenDung.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this,
+                        "Khong the ghi du lieu",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -137,8 +155,8 @@ public class TuyenDung extends javax.swing.JFrame {
         } else {
             Date ns = tNgaySinh1.getDate();
 //            Date nc = tNgayCap.getDate();
-
-            if (LocalDate.now().getYear() - ns.getYear() < 18) {
+            int nss = ns.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getYear();
+            if (LocalDate.now().getYear() - nss < 18) {
 //                System.out.println(ns.getYear() - LocalDate.now().getYear());
                 JOptionPane.showMessageDialog(this,
                         "Tuoi phai lon hon 18",
@@ -172,6 +190,10 @@ public class TuyenDung extends javax.swing.JFrame {
                 ReadWriteObject.WriteObject("Nguoi.bin", dsN);
             } catch (IOException ex) {
                 Logger.getLogger(TuyenDung.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this,
+                        "Khong the doc du lieu",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }
