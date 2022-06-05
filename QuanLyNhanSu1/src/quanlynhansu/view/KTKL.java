@@ -259,6 +259,7 @@ public class KTKL extends javax.swing.JFrame {
         // TODO add your handling code here:
         dongChon = jTable2.getSelectedRow();
         if (dongChon != -1) {
+            dongChon = jTable2.convertRowIndexToModel(dongChon);
             ttId.setText("ID: " + dskk.get(dongChon).getId().toString());
             ttTen.setText("Ho ten: " + getHoTen(dskk.get(dongChon).getId()));
             Integer skt = 0, skl = 0;
@@ -309,6 +310,7 @@ public class KTKL extends javax.swing.JFrame {
     private void sBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sBTNActionPerformed
         // TODO add your handling code here:
         if (dongChon != -1) {
+            dongChon = jTable2.convertRowIndexToModel(dongChon);
             Integer id = dskk.get(dongChon).getId();
             ArrayList<KhenThuongVaKiLuat> x = new ArrayList<>();
             for (Iterator<KhenThuongVaKiLuat> iterator = dskk.iterator(); iterator.hasNext();) {

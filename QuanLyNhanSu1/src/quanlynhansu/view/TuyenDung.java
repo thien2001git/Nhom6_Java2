@@ -162,6 +162,7 @@ public class TuyenDung extends javax.swing.JFrame {
                         "Tuoi phai lon hon 18",
                         "Thong bao", JOptionPane.PLAIN_MESSAGE);
             } else {
+                dongChon = jTable1.convertRowIndexToModel(dongChon);
                 Nguoi n = new Nguoi(Integer.parseInt(sID.getText()),
                         tGioiTinh1.getSelectedIndex() == 0 ? true : false,
                         tNgaySinh1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
@@ -589,6 +590,7 @@ public class TuyenDung extends javax.swing.JFrame {
         // TODO add your handling code here:
         dongChon = jTable1.getSelectedRow();
         if (dongChon != -1) {
+            dongChon = jTable1.convertRowIndexToModel(dongChon);
             ng = dsN.get(dongChon);
             id.setText("Id: " + ng.getId().toString());
             tenN.setText("Ho Ten: " + ng.getTen());
@@ -645,6 +647,7 @@ public class TuyenDung extends javax.swing.JFrame {
     private void tuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tuyenActionPerformed
         // TODO add your handling code here:
         if (dongChon != -1) {
+            dongChon = jTable1.convertRowIndexToModel(dongChon);
             NhanSu ns = new NhanSu(dsN.get(dongChon));
             ArrayList<NhanSu> ns2 = new ArrayList<>();
             try {

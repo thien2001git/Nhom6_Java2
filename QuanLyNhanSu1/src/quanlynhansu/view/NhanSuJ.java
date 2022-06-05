@@ -34,11 +34,11 @@ public class NhanSuJ extends javax.swing.JFrame {
     public NhanSuJ() {
         initComponents();
         
-        ktkl = new ArrayList<>();
-        ktkl.add(new KhenThuongVaKiLuat("Day gioi", "90% sinh vien gioi", "Thuong 500k"));
-        ktkl.add(new KhenThuongVaKiLuat("Khong nghi day", "100% đi day", "Thuong 800k"));
-        ktkl.add(new KhenThuongVaKiLuat("Nghi day qua so buoi", "50% khong đi day", "Phat 500k"));
-        ktkl.add(new KhenThuongVaKiLuat("Danh sinh vien", "Gay thuong tich cho sinh vien", "Duoi viec"));
+//        ktkl = new ArrayList<>();
+//        ktkl.add(new KhenThuongVaKiLuat("Day gioi", "90% sinh vien gioi", "Thuong 500k"));
+//        ktkl.add(new KhenThuongVaKiLuat("Khong nghi day", "100% đi day", "Thuong 800k"));
+//        ktkl.add(new KhenThuongVaKiLuat("Nghi day qua so buoi", "50% khong đi day", "Phat 500k"));
+//        ktkl.add(new KhenThuongVaKiLuat("Danh sinh vien", "Gay thuong tich cho sinh vien", "Duoi viec"));
         
         try {
             dsNS = (ArrayList<NhanSu>) ReadWriteObject.ReadObject("NhanSu.bin");
@@ -302,7 +302,9 @@ public class NhanSuJ extends javax.swing.JFrame {
         // TODO add your handling code here:
         dongChon = jTable1.getSelectedRow();
         if (dongChon != -1) {
+            dongChon = jTable1.convertRowIndexToModel(dongChon);
             NhanSu x = dsNS.get(dongChon);
+       
             ttBoPhan.setText("Bo phan: " + x.getBoPhan());
             ttChucDanh.setText("Chuc danh: " + x.getcDanh());
             ttChucVu.setText("Chuc vu: " + x.getcVu());
@@ -332,6 +334,7 @@ public class NhanSuJ extends javax.swing.JFrame {
     private void sBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sBTNActionPerformed
         // TODO add your handling code here:
         if (dongChon != -1) {
+            dongChon = jTable1.convertRowIndexToModel(dongChon);
             NhanSu x = dsNS.get(dongChon);
 
             x.setBoPhan(sBoPhan.getText());

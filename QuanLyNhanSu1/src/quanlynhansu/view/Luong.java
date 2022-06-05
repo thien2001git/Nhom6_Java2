@@ -244,6 +244,7 @@ public class Luong extends javax.swing.JFrame {
     private void sBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sBTNActionPerformed
         // TODO add your handling code here:
         if (dongChon != -1) {
+            dongChon = jTable2.convertRowIndexToModel(dongChon);
             quanlynhansu.model.Luong l = dsNS.get(dongChon).getLuong();
             NhanSu n = dsNS.get(dongChon);
             try {
@@ -265,6 +266,7 @@ public class Luong extends javax.swing.JFrame {
         // TODO add your handling code here:
         dongChon = jTable2.getSelectedRow();
         if (dongChon != -1) {
+            dongChon = jTable2.convertRowIndexToModel(dongChon);
             quanlynhansu.model.Luong l = dsNS.get(dongChon).getLuong();
             NhanSu n = dsNS.get(dongChon);
             ttHeSo.setText("He so: " + l.getHeso().toString());
